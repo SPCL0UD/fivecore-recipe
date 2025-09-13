@@ -1,8 +1,16 @@
-- action: write_file
-  dest: server.cfg
-  data: |
-    sv_hostname "FiveCore RP Server"
-    sv_maxclients 64
+name: FiveCore RP Framework
+description: Plantilla oficial para servidores basados en FiveCore con MongoDB.
+
+tasks:
+  - action: download_github
+    src: https://github.com/SPCL0UD/fivecore
+    dest: resources/[fivecore]
+
+  - action: write_file
+    dest: server.cfg
+    data: |
+      sv_hostname "FiveCore RP Server"
+    ensure fivecore
     endpoint_add_tcp "0.0.0.0:30120"
     endpoint_add_udp "0.0.0.0:30120"
 
